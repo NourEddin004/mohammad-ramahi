@@ -669,8 +669,8 @@ html[lang="en"] .name{ line-height:1.15 }
 @keyframes draw{ to{ stroke-dashoffset:0 } }
 
 /* ── section-title rule grows when the title reveals ── */
-.section-title::after{ width:0; transition:width .8s var(--ease) .15s }
-.section-title.in::after{ width:52px }
+.section-title::after{ transform:scaleX(0); transition:transform .8s var(--ease) .15s }
+.section-title.in::after{ transform:scaleX(1) }
 
 /* ── the hero cap bobs gently ── */
 .seal-sm .seal-cap{ animation:bob 4s var(--ease) infinite }
@@ -701,5 +701,5 @@ html[lang="en"] .name{ line-height:1.15 }
   .name,.ec-name,.seal-sm .seal-cap,.ec-spark,.card-spark,
   .btn-solid::after,.cue-line{ animation:none }
   .site.on .orn use{ animation:none; stroke-dashoffset:0 }
-  .section-title::after{ width:52px; transition:none }
+  .section-title::after{ transform:scaleX(1); transition:none }
 }
