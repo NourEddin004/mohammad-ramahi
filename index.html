@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<title>دعوة تخرّج محمد عبدالله الرمحي</title>
+<meta name="description" content="يشرّفنا حضوركم ومشاركتنا فرحة تخرّج محمد عبدالله الرمحي — الأربعاء 12 آب 2026، الساعة 8:00 مساءً، ديوان أبناء الشمال، طبربور.">
+<meta name="theme-color" content="#FAF8F4">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="دعوة محمد">
+
+<meta property="og:title" content="دعوة تخرّج محمد عبدالله الرمحي">
+<meta property="og:description" content="الأربعاء 12 آب 2026 · 8:00 مساءً · ديوان أبناء الشمال، طبربور">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_JO">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Amiri:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="is-locked">
+
+<div class="backdrop" aria-hidden="true"></div>
+<canvas id="confetti" class="confetti" aria-hidden="true"></canvas>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SHARED ORNAMENTS — one definition, reused as <use>
+     ═══════════════════════════════════════════════════════════ -->
+<svg width="0" height="0" aria-hidden="true" style="position:absolute">
+  <defs>
+    <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"  stop-color="#F0E3BE"/>
+      <stop offset="35%" stop-color="#C9A227"/>
+      <stop offset="70%" stop-color="#E0C878"/>
+      <stop offset="100%" stop-color="#A9861B"/>
+    </linearGradient>
+
+    <!-- the ribbon that curls into each corner -->
+    <path id="ribbon" pathLength="1" d="M2 46C24 12 62 4 96 18c30 12 44 36 74 40 26 3 44-8 56-28"/>
+
+    <!-- mortarboard -->
+    <g id="cap">
+      <path d="M32 6 4 19l28 13 28-13L32 6Z" fill="url(#goldGrad)"/>
+      <path d="M14 26v13c0 5 8 9 18 9s18-4 18-9V26l-18 8-18-8Z" fill="url(#goldGrad)" opacity=".92"/>
+      <path d="M57 21v15" stroke="url(#goldGrad)" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+      <path d="M57 36c-2 4-2 8 0 12 2-4 2-8 0-12Z" fill="url(#goldGrad)"/>
+    </g>
+
+    <!-- four-point sparkle -->
+    <path id="spark" d="M10 0c1 6 3 9 10 10-7 1-9 4-10 10-1-6-3-9-10-10 7-1 9-4 10-10Z"/>
+  </defs>
+</svg>
+
+<!-- Language switch — floats above everything, including the envelope -->
+<button id="langBtn" class="lang-btn" type="button" lang="en" aria-label="English">EN</button>
+
+<!-- Background music — a hidden YouTube player; starts when the seal opens -->
+<div id="ytBg" aria-hidden="true"></div>
+<button id="musicBtn" class="music-btn muted" type="button" aria-label="تشغيل الموسيقى" aria-pressed="false" hidden>
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M9 18V6l10-2v11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="6.6" cy="18" r="2.6" fill="currentColor"/>
+    <circle cx="16.6" cy="15" r="2.6" fill="currentColor"/>
+  </svg>
+</button>
+
+<!-- ═══════════════════════════════════════════════════════════
+     1 · THE ENVELOPE — break the seal, the card rises out
+     ═══════════════════════════════════════════════════════════ -->
+<div class="intro" id="intro">
+  <div class="env" id="env">
+
+    <!-- the card inside; rises out of the pocket once the flap opens -->
+    <div class="env-card" id="envCard">
+      <span class="ec-orn" aria-hidden="true">
+        <svg viewBox="0 0 240 60"><use href="#ribbon" stroke="url(#goldGrad)" stroke-width="3" fill="none"/></svg>
+      </span>
+      <p class="ec-kicker">حفل تخرّج</p>
+      <p class="ec-name">محمّد</p>
+      <p class="ec-sub">عبدالله الرمحي</p>
+      <span class="ec-spark" aria-hidden="true"><svg viewBox="0 0 20 20"><use href="#spark" fill="url(#goldGrad)"/></svg></span>
+    </div>
+
+    <!-- the pocket -->
+    <div class="env-front" aria-hidden="true">
+      <svg class="ef-arc" viewBox="0 0 200 120">
+        <path id="arcPath" d="M18 106a82 82 0 0 1 164 0" fill="none"/>
+        <text class="arc-text"><textPath href="#arcPath" startOffset="50%" text-anchor="middle">YOU ARE INVITED TO</textPath></text>
+      </svg>
+      <span class="ef-orn eo-l" aria-hidden="true">
+        <svg viewBox="0 0 240 60"><use href="#ribbon" stroke="url(#goldGrad)" stroke-width="2.5" fill="none"/></svg>
+      </span>
+      <span class="ef-orn eo-r" aria-hidden="true">
+        <svg viewBox="0 0 240 60"><use href="#ribbon" stroke="url(#goldGrad)" stroke-width="2.5" fill="none"/></svg>
+      </span>
+    </div>
+
+    <!-- the flap, hinged at the top -->
+    <div class="env-flap" id="envFlap" aria-hidden="true"></div>
+
+    <!-- the wax seal -->
+    <button class="env-seal" id="envSeal" type="button" aria-label="اضغط الختم لفتح الدعوة">
+      <span class="seal-wax" aria-hidden="true">
+        <!-- ivory cap: the gold-on-gold <use> version disappears on the wax -->
+        <svg class="seal-cap" viewBox="0 0 64 52">
+          <path d="M32 6 4 19l28 13 28-13L32 6Z" fill="#FBF6E8"/>
+          <path d="M14 26v13c0 5 8 9 18 9s18-4 18-9V26l-18 8-18-8Z" fill="#FBF6E8" opacity=".9"/>
+          <path d="M57 21v15" stroke="#FBF6E8" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+          <path d="M57 36c-2 4-2 8 0 12 2-4 2-8 0-12Z" fill="#FBF6E8"/>
+        </svg>
+      </span>
+      <span class="seal-ring" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <p class="intro-hint" id="introHint">اضغط الختم لفتح الدعوة</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     MAIN
+     ═══════════════════════════════════════════════════════════ -->
+<main class="site" id="site">
+
+  <!-- ── 2 · THE INVITATION ─────────────────────────────────── -->
+  <header class="hero" id="top">
+    <span class="orn orn-tl" aria-hidden="true">
+      <svg viewBox="0 0 240 60"><use href="#ribbon" stroke="url(#goldGrad)" stroke-width="2.5" fill="none"/></svg>
+    </span>
+    <span class="orn orn-tr" aria-hidden="true">
+      <svg viewBox="0 0 240 60"><use href="#ribbon" stroke="url(#goldGrad)" stroke-width="2.5" fill="none"/></svg>
+    </span>
+
+    <div class="hero-inner">
+      <div class="seal seal-sm reveal" aria-hidden="true">
+        <svg class="seal-arc" viewBox="0 0 200 120">
+          <path id="arcPath2" d="M18 106a82 82 0 0 1 164 0" fill="none"/>
+          <text class="arc-text"><textPath href="#arcPath2" startOffset="50%" text-anchor="middle">YOU ARE INVITED TO</textPath></text>
+        </svg>
+        <svg class="seal-cap" viewBox="0 0 64 52"><use href="#cap"/></svg>
+      </div>
+
+      <p class="verse reveal">
+        أشرق هذا اليوم بالبشرى<br>
+        الحمدلله على تباشير الأفراح
+      </p>
+
+      <p class="verse reveal">
+        الحمدلله الذي بلّغني نجاح ابني<br>
+        وقرّة عيني بالتوجيهي
+      </p>
+
+      <div class="name-block reveal">
+        <span class="name-rule" aria-hidden="true"></span>
+        <h1 class="name">محمّد</h1>
+        <span class="name-rule" aria-hidden="true"></span>
+      </div>
+      <p class="family reveal">عبدالله الرمحي</p>
+
+      <p class="grade reveal">بمعدل <b>92.80%</b></p>
+
+      <p class="honour reveal">يشرّفنا حضوركم ومشاركتنا فرحة التخرّج</p>
+    </div>
+
+    <a href="#details" class="scroll-cue" aria-label="التفاصيل">
+      <span class="cue-label">التفاصيل</span>
+      <span class="cue-line" aria-hidden="true"></span>
+    </a>
+  </header>
+
+  <!-- ── 3 · WHEN & WHERE ───────────────────────────────────── -->
+  <section class="section details" id="details" aria-labelledby="details-h">
+    <h2 class="section-title reveal" id="details-h">الموعد والمكان</h2>
+
+    <div class="detail-grid">
+      <article class="d-card reveal">
+        <span class="d-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+        </span>
+        <p class="d-label">التاريخ</p>
+        <h3 class="d-title">الأربعاء<br>12 آب 2026</h3>
+        <p class="d-text">الساعة 8:00 مساءً</p>
+      </article>
+
+      <article class="d-card reveal">
+        <span class="d-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+        </span>
+        <p class="d-label">المكان</p>
+        <h3 class="d-title">ديوان<br>أبناء الشمال</h3>
+        <p class="d-text">طبربور، عمّان</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ── 4 · THE EVENING ────────────────────────────────────── -->
+  <section class="section run" aria-labelledby="run-h">
+    <h2 class="section-title reveal" id="run-h">برنامج السهرة</h2>
+    <p class="section-lede reveal">بإذن الله يبدأ الحفل على فترتين</p>
+
+    <ol class="run-list">
+      <li class="run-item reveal">
+        <span class="run-time">8:00 <i>—</i> 9:00</span>
+        <div class="run-body">
+          <h3 class="run-title">استقبال السيدات</h3>
+          <p class="run-text">الفترة الأولى للنساء فقط.</p>
+        </div>
+      </li>
+      <li class="run-item reveal">
+        <span class="run-time">9:00 <i>—</i> 10:30</span>
+        <div class="run-body">
+          <h3 class="run-title">دخول الخريج بالزفّة</h3>
+          <p class="run-text">يدخل الخريج بالزفّة مع الشباب بإذن الله. 💐</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ── 5 · COUNTDOWN ──────────────────────────────────────── -->
+  <section class="section counting" aria-labelledby="count-h">
+    <div class="count-card reveal">
+      <p class="eyebrow" id="count-h">باقي على الحفل</p>
+
+      <div class="countdown" id="countdown" aria-live="polite">
+        <div class="cd-unit"><b id="cdD">00</b><small>يوم</small></div>
+        <div class="cd-unit"><b id="cdH">00</b><small>ساعة</small></div>
+        <div class="cd-unit"><b id="cdM">00</b><small>دقيقة</small></div>
+        <div class="cd-unit"><b id="cdS">00</b><small>ثانية</small></div>
+      </div>
+
+      <div class="cal" id="cal">
+        <button class="btn btn-ghost" id="calBtn" type="button"
+                aria-haspopup="menu" aria-expanded="false" aria-controls="calMenu">
+          <svg class="btn-ico" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>
+          </svg>
+          أضف الموعد للتقويم
+        </button>
+        <div class="cal-menu" id="calMenu" role="menu" hidden>
+          <a role="menuitem" id="calGoogle"  target="_blank" rel="noopener">تقويم جوجل</a>
+          <a role="menuitem" id="calOutlook" target="_blank" rel="noopener">أوتلوك</a>
+          <a role="menuitem" id="calApple"   download="graduation.ics">آبل / iCal</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 6 · THE VENUE ──────────────────────────────────────── -->
+  <section class="section venue" id="venue" aria-labelledby="venue-h">
+    <h2 class="section-title reveal" id="venue-h">كيف تصلون</h2>
+
+    <div class="venue-card reveal">
+      <h3 class="v-name">ديوان أبناء الشمال</h3>
+      <p class="v-addr">طبربور — عمّان، الأردن</p>
+      <div class="v-actions">
+        <a class="btn btn-solid" href="https://maps.app.goo.gl/zgfTd7A1XE3Cv6Mg9" target="_blank" rel="noopener">
+          <svg class="btn-ico" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/>
+          </svg>
+          افتح الموقع على الخريطة
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 7 · SHARE ──────────────────────────────────────────── -->
+  <section class="section share-cta" aria-labelledby="share-h">
+    <div class="share-panel reveal">
+      <span class="share-cap" aria-hidden="true"><svg viewBox="0 0 64 52"><use href="#cap"/></svg></span>
+      <h2 class="section-title" id="share-h">شاركوا الدعوة</h2>
+      <p class="section-lede">أرسلوا الرابط لمن تحبّون حضورهم.</p>
+      <div class="share-actions">
+        <button class="btn btn-solid" id="shareBtn" type="button">
+          <svg class="btn-ico" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+            <path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/>
+          </svg>
+          مشاركة الدعوة
+        </button>
+        <button class="btn btn-ghost" id="copyBtn" type="button">نسخ الرابط</button>
+      </div>
+      <p class="share-note" id="shareNote" role="status" hidden>تم نسخ الرابط ✓</p>
+    </div>
+  </section>
+
+  <!-- ── 8 · FOOTER ─────────────────────────────────────────── -->
+  <footer class="foot">
+    <span class="foot-orn" aria-hidden="true">
+      <svg viewBox="0 0 240 60"><use href="#ribbon" stroke="url(#goldGrad)" stroke-width="2.5" fill="none"/></svg>
+    </span>
+    <p class="foot-line">بحضوركم تكتمل فرحتنا</p>
+    <p class="foot-date">12 · 08 · 2026</p>
+  </footer>
+</main>
+
+<div class="sticky-cta" id="stickyCta" hidden>
+  <a class="btn btn-solid" href="https://maps.app.goo.gl/zgfTd7A1XE3Cv6Mg9" target="_blank" rel="noopener">الموقع على الخريطة</a>
+</div>
+
+<script src="script.js"></script>
+<script src="i18n.js"></script>
+</body>
+</html>
