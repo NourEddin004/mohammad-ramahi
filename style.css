@@ -100,11 +100,6 @@ ol,ul{ margin:0; padding:0; list-style:none }
 }
 .btn-solid:hover{ transform:translateY(-1px); box-shadow:0 18px 34px -14px rgba(169,134,27,.6) }
 
-.btn-ghost{
-  background:var(--ivory-warm); color:var(--gold-ink); border-color:rgba(201,162,39,.45);
-}
-.btn-ghost:hover{ border-color:var(--gold); background:#fff }
-
 /* ═══ 1 · THE ENVELOPE ═════════════════════════════════════════
    A gold-sealed envelope. Tapping the seal pops the wax, swings
    the flap open in 3D, and the card rises out of the pocket. */
@@ -398,6 +393,7 @@ ol,ul{ margin:0; padding:0; list-style:none }
   color:var(--gold-deep);
 }
 .grade-num{
+  display:inline-block;   /* transforms need a box */
   font-family:var(--font-latin); font-weight:600;
   font-size:clamp(3.2rem, 14vw, 5rem);
   line-height:1.1;
@@ -546,24 +542,6 @@ ol,ul{ margin:0; padding:0; list-style:none }
 .v-addr{ margin-top:var(--s-2); color:var(--ink-2); font-size:var(--t-small) }
 .v-actions{ margin-top:var(--s-5); display:flex; justify-content:center }
 
-/* ═══ 7 · SHARE ════════════════════════════════════════════════ */
-
-.share-panel{
-  padding:var(--s-7) var(--s-5);
-  text-align:center;
-  background:linear-gradient(168deg,var(--ivory-warm),var(--ivory-2));
-  border:var(--hairline);
-  border-radius:var(--radius-l);
-  box-shadow:var(--shadow);
-}
-.share-cap{ display:block; width:46px; margin:0 auto var(--s-4) }
-.share-cap svg{ width:100%; height:auto; display:block }
-.share-actions{
-  margin-top:var(--s-5);
-  display:flex; flex-wrap:wrap; gap:var(--s-3); justify-content:center;
-}
-.share-note{ margin-top:var(--s-4); font-size:var(--t-small); color:var(--gold-deep) }
-
 /* ═══ 8 · FOOTER ═══════════════════════════════════════════════ */
 
 .foot{
@@ -653,6 +631,23 @@ html[lang="en"] .name{ line-height:1.15 }
   50%{ background-position:100% 0 }
 }
 
+/* ── the grade pops when its count-up lands, then keeps breathing ── */
+.grade-num.done{
+  animation:
+    foil 5.5s var(--ease) infinite,
+    gradePop .55s var(--ease),
+    gradePulse 3.2s var(--ease) .55s infinite;
+}
+@keyframes gradePop{
+  0%{ transform:scale(1) }
+  45%{ transform:scale(1.14) }
+  100%{ transform:scale(1) }
+}
+@keyframes gradePulse{
+  0%,100%{ transform:scale(1) }
+  50%{ transform:scale(1.04) }
+}
+
 /* ── the corner ribbons draw themselves in ── */
 .site.on .orn use{
   stroke-dasharray:1; stroke-dashoffset:1;
@@ -690,7 +685,7 @@ html[lang="en"] .name{ line-height:1.15 }
 @keyframes cue{ 0%,100%{ transform:scaleY(.55); opacity:.6 } 50%{ transform:scaleY(1); opacity:1 } }
 
 @media (prefers-reduced-motion:reduce){
-  .name,.ec-name,.grade-num,.seal-sm .seal-cap,.ec-spark,.card-spark,
+  .name,.ec-name,.grade-num,.grade-num.done,.seal-sm .seal-cap,.ec-spark,.card-spark,
   .btn-solid::after,.cue-line{ animation:none }
   .site.on .orn use{ animation:none; stroke-dashoffset:0 }
   .section-title::after{ transform:scaleX(1); transition:none }

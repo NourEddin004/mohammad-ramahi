@@ -23,9 +23,6 @@ const CONFIG = {
 const MSG = {
   live    : 'الحفل قائم الآن',
   thanks  : 'شكراً لمشاركتكم فرحتنا',
-  copied  : 'تم نسخ الرابط ✓',
-  copyFail: 'تعذّر النسخ — انسخ الرابط من شريط العنوان.',
-  shareText: 'يشرّفنا حضوركم — حفل تخرّج محمد عبدالله الرمحي، الأربعاء 12 آب 2026، ديوان أبناء الشمال.',
 };
 window.MSG = MSG;
 
@@ -174,44 +171,9 @@ function runGrade(){
     const eased = 1 - Math.pow(1 - p, 3);
     gradeNum.textContent = (GRADE * eased).toFixed(2) + '%';
     if (p < 1) requestAnimationFrame(step);
+    else gradeNum.classList.add('done');   // triggers the pop + pulse
   })(t0);
 }
-
-/* ═══ 5 · SHARE ═══ */
-const shareBtn = $('#shareBtn'), copyBtn = $('#copyBtn'), shareNote = $('#shareNote');
-const shareData = () => ({
-  title: CONFIG.title,
-  text : MSG.shareText,
-  url  : location.href,
-});
-
-function flash(msg){
-  shareNote.textContent = msg;
-  shareNote.hidden = false;
-  clearTimeout(flash.t);
-  flash.t = setTimeout(() => { shareNote.hidden = true; }, 2600);
-}
-
-shareBtn.addEventListener('click', async () => {
-  if (navigator.share) {
-    try { await navigator.share(shareData()); return; } catch { /* dismissed */ }
-  }
-  // no share sheet (desktop): fall back to WhatsApp
-  const d = shareData();
-  window.open(
-    `https://wa.me/?text=${encodeURIComponent(d.text + '\n' + d.url)}`,
-    '_blank', 'noopener'
-  );
-});
-
-copyBtn.addEventListener('click', async () => {
-  try {
-    await navigator.clipboard.writeText(location.href);
-    flash(MSG.copied);
-  } catch {
-    flash(MSG.copyFail);
-  }
-});
 
 /* ═══ 6 · STICKY MAP BUTTON ═══ */
 const sticky = $('#stickyCta');

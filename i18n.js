@@ -13,10 +13,6 @@
   var PIN_ICO =
     '<svg class="btn-ico" viewBox="0 0 24 24" aria-hidden="true">' +
     '<path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>';
-  var SHARE_ICO =
-    '<svg class="btn-ico" viewBox="0 0 24 24" aria-hidden="true">' +
-    '<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>' +
-    '<path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>';
 
   /* s: selector · i: which match · en/ar: innerHTML · attr: attribute */
   var DICT = [
@@ -63,16 +59,10 @@
     { s: '.cd-unit:nth-child(4) small', ar: 'ثانية', en: 'sec' },
 
     /* venue */
-    { s: '#venue-h', ar: 'كيف تصلون', en: 'Getting there' },
+    { s: '#venue-h', ar: 'الموقع', en: 'The Venue' },
     { s: '.v-name', ar: 'ديوان أبناء الشمال', en: 'Abnaa Al-Shamal Diwan' },
     { s: '.v-addr', ar: 'طبربور — عمّان، الأردن', en: 'Tabarbour — Amman, Jordan' },
     { s: '.v-actions .btn-solid', ar: PIN_ICO + ' افتح الموقع على الخريطة', en: PIN_ICO + ' Open in Google Maps' },
-
-    /* share */
-    { s: '#share-h', ar: 'شاركوا الدعوة', en: 'Share the invitation' },
-    { s: '.share-panel .section-lede', ar: 'أرسلوا الرابط لمن تحبّون حضورهم.', en: "Send the link to everyone you'd love to see there." },
-    { s: '#shareBtn', ar: SHARE_ICO + ' مشاركة الدعوة', en: SHARE_ICO + ' Share' },
-    { s: '#copyBtn', ar: 'نسخ الرابط', en: 'Copy link' },
 
     /* footer + sticky */
     { s: '.foot-line', ar: 'بحضوركم تكتمل فرحتنا', en: 'Your presence completes our joy' },
@@ -83,9 +73,6 @@
   var MSG_EN = {
     live    : 'The celebration is underway',
     thanks  : 'Thank you for sharing our joy',
-    copied  : 'Link copied ✓',
-    copyFail: 'Copy failed — use the address bar instead.',
-    shareText: 'You are invited — the graduation of Mohammad Abdullah Al-Ramhi, Wednesday 12 August 2026, Abnaa Al-Shamal Diwan, Tabarbour.',
   };
 
   var TITLE = {
