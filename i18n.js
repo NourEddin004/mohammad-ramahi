@@ -10,9 +10,6 @@
 (function () {
   'use strict';
 
-  var CAL_ICO =
-    '<svg class="btn-ico" viewBox="0 0 24 24" aria-hidden="true">' +
-    '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>';
   var PIN_ICO =
     '<svg class="btn-ico" viewBox="0 0 24 24" aria-hidden="true">' +
     '<path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>';
@@ -36,7 +33,7 @@
     { s: '.hero .verse', i: 1, ar: 'الحمدلله الذي بلّغني نجاح ابني<br>وقرّة عيني بالتوجيهي', en: 'Praise be to God, who blessed my son,<br>the light of my eyes, with success in Tawjihi' },
     { s: '.name', ar: 'محمّد', en: 'Mohammad' },
     { s: '.family', ar: 'عبدالله الرمحي', en: 'Abdullah Al-Ramhi' },
-    { s: '.grade', ar: 'بمعدل <b>92.80%</b>', en: 'With an average of <b>92.80%</b>' },
+    { s: '.grade-label', ar: 'المعدل', en: 'The Average' },
     { s: '.honour', ar: 'يشرّفنا حضوركم ومشاركتنا فرحة التخرّج', en: 'We would be honoured by your presence at the graduation celebration' },
     { s: '.cue-label', ar: 'التفاصيل', en: 'Details' },
     { s: '.scroll-cue', attr: 'aria-label', ar: 'التفاصيل', en: 'Details' },
@@ -64,10 +61,6 @@
     { s: '.cd-unit:nth-child(2) small', ar: 'ساعة', en: 'hours' },
     { s: '.cd-unit:nth-child(3) small', ar: 'دقيقة', en: 'min' },
     { s: '.cd-unit:nth-child(4) small', ar: 'ثانية', en: 'sec' },
-    { s: '#calBtn', ar: CAL_ICO + ' أضف الموعد للتقويم', en: CAL_ICO + ' Add to calendar' },
-    { s: '#calGoogle', ar: 'تقويم جوجل', en: 'Google Calendar' },
-    { s: '#calOutlook', ar: 'أوتلوك', en: 'Outlook' },
-    { s: '#calApple', ar: 'آبل / iCal', en: 'Apple / iCal' },
 
     /* venue */
     { s: '#venue-h', ar: 'كيف تصلون', en: 'Getting there' },

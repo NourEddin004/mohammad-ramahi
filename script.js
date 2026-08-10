@@ -50,6 +50,7 @@ function enterSite(){
   site.classList.add('on');
   musicBtn.hidden = false;
   burst(80);
+  runGrade();
   startReveal();
   setTimeout(() => { intro.hidden = true; }, 900);
 }
@@ -157,46 +158,24 @@ function tickCountdown(){
 tickCountdown();
 const cdTimer = setInterval(() => { if (tickCountdown()) clearInterval(cdTimer); }, 1000);
 
-/* ═══ 4 · ADD TO CALENDAR ═══ */
-const pad2 = n => String(n).padStart(2, '0');
-const utcStamp = d =>
-  `${d.getUTCFullYear()}${pad2(d.getUTCMonth()+1)}${pad2(d.getUTCDate())}T` +
-  `${pad2(d.getUTCHours())}${pad2(d.getUTCMinutes())}00Z`;
-
-const calText = encodeURIComponent(CONFIG.title);
-const calLoc  = encodeURIComponent(`${CONFIG.venueName}، ${CONFIG.venueAddress}`);
-const calDesc = encodeURIComponent(CONFIG.details);
-
-$('#calGoogle').href =
-  `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${calText}` +
-  `&dates=${utcStamp(CONFIG.start)}/${utcStamp(CONFIG.end)}&details=${calDesc}&location=${calLoc}`;
-$('#calOutlook').href =
-  `https://outlook.live.com/calendar/0/deeplink/compose?path=/calendar/action/compose&rru=addevent` +
-  `&subject=${calText}&startdt=${CONFIG.start.toISOString()}&enddt=${CONFIG.end.toISOString()}` +
-  `&body=${calDesc}&location=${calLoc}`;
-$('#calApple').href = URL.createObjectURL(new Blob([[
-  'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//InviteSites//Graduation//AR','BEGIN:VEVENT',
-  `UID:ramahi-${+CONFIG.start}@invitation`,
-  `DTSTAMP:${utcStamp(new Date())}`,
-  `DTSTART:${utcStamp(CONFIG.start)}`,
-  `DTEND:${utcStamp(CONFIG.end)}`,
-  `SUMMARY:${CONFIG.title}`,
-  `LOCATION:${CONFIG.venueName}, ${CONFIG.venueAddress}`,
-  `DESCRIPTION:${CONFIG.details}`,
-  'END:VEVENT','END:VCALENDAR'
-].join('\r\n')], { type:'text/calendar' }));
-
-const calBtn = $('#calBtn'), calMenu = $('#calMenu');
-function closeCal(){ calMenu.hidden = true; calBtn.setAttribute('aria-expanded','false'); }
-calBtn.addEventListener('click', e => {
-  e.stopPropagation();
-  const open = calMenu.hidden;
-  calMenu.hidden = !open;
-  calBtn.setAttribute('aria-expanded', String(open));
-});
-document.addEventListener('click', e => { if (!$('#cal').contains(e.target)) closeCal(); });
-calMenu.addEventListener('click', closeCal);
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCal(); });
+/* ═══ 4 · GRADE COUNT-UP ═══
+   The big average in the hero counts from 0 up to its real value
+   the moment the page is revealed. */
+const gradeNum = $('#gradeNum');
+const GRADE = 92.80;
+let gradeDone = false;
+function runGrade(){
+  if (gradeDone || !gradeNum) return;
+  gradeDone = true;
+  if (REDUCED) { gradeNum.textContent = GRADE.toFixed(2) + '%'; return; }
+  const t0 = performance.now(), dur = 2400;
+  (function step(now){
+    const p = Math.min((now - t0) / dur, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    gradeNum.textContent = (GRADE * eased).toFixed(2) + '%';
+    if (p < 1) requestAnimationFrame(step);
+  })(t0);
+}
 
 /* ═══ 5 · SHARE ═══ */
 const shareBtn = $('#shareBtn'), copyBtn = $('#copyBtn'), shareNote = $('#shareNote');
@@ -329,6 +308,7 @@ if (REDUCED) {
   document.body.classList.remove('is-locked');
   site.classList.add('on');
   musicBtn.hidden = false;
+  runGrade();
   $$('.reveal').forEach(el => el.classList.add('in'));
 }
 

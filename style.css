@@ -390,19 +390,26 @@ ol,ul{ margin:0; padding:0; list-style:none }
   margin-top:calc(var(--s-3) * -1);
 }
 .grade{
-  display:inline-flex; align-items:baseline; gap:.45em;
-  margin-top:var(--s-2);
-  padding:.42em 1.15em;
-  border:1px solid rgba(201,162,39,.45);
-  border-radius:999px;
-  background:linear-gradient(180deg,#FFFDF9,var(--ivory-2));
-  box-shadow:var(--shadow-s);
-  color:var(--ink-2); font-size:var(--t-body);
+  display:flex; flex-direction:column; align-items:center; gap:.15em;
+  margin-top:var(--s-3);
 }
-.grade b{
+.grade-label{
+  font-size:var(--t-label); letter-spacing:var(--track-label);
+  color:var(--gold-deep);
+}
+.grade-num{
   font-family:var(--font-latin); font-weight:600;
-  font-size:1.2em; color:var(--gold-deep);
-  letter-spacing:.02em;
+  font-size:clamp(3.2rem, 14vw, 5rem);
+  line-height:1.1;
+  font-variant-numeric:lining-nums tabular-nums;
+  /* same gold foil treatment as the calligraphic name */
+  background:linear-gradient(100deg,
+    var(--gold-deep) 0%, var(--gold) 35%, #EFD98F 50%,
+    var(--gold) 65%, var(--gold-deep) 100%);
+  background-size:300% 100%;
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent; color:var(--gold);
+  animation:foil 5.5s var(--ease) infinite;
 }
 
 .honour{
@@ -522,21 +529,6 @@ ol,ul{ margin:0; padding:0; list-style:none }
   font-family:var(--font-display); font-weight:700;
   font-size:var(--t-h2); color:var(--gold-deep); margin-top:var(--s-4);
 }
-
-.cal{ position:relative; margin-top:var(--s-6) }
-.cal-menu{
-  position:absolute; inset-inline:0; top:calc(100% + .5rem);
-  margin-inline:auto; width:min(240px,100%);
-  background:#fff; border:var(--hairline); border-radius:var(--radius-s);
-  box-shadow:var(--shadow); overflow:hidden; z-index:5;
-}
-.cal-menu a{
-  display:block; padding:.85rem 1rem;
-  color:var(--ink); text-decoration:none; font-size:var(--t-small);
-  border-bottom:var(--hairline-soft);
-}
-.cal-menu a:last-child{ border-bottom:0 }
-.cal-menu a:hover{ background:var(--ivory-2); color:var(--gold-ink) }
 
 /* ═══ 6 · VENUE ════════════════════════════════════════════════ */
 
@@ -698,7 +690,7 @@ html[lang="en"] .name{ line-height:1.15 }
 @keyframes cue{ 0%,100%{ transform:scaleY(.55); opacity:.6 } 50%{ transform:scaleY(1); opacity:1 } }
 
 @media (prefers-reduced-motion:reduce){
-  .name,.ec-name,.seal-sm .seal-cap,.ec-spark,.card-spark,
+  .name,.ec-name,.grade-num,.seal-sm .seal-cap,.ec-spark,.card-spark,
   .btn-solid::after,.cue-line{ animation:none }
   .site.on .orn use{ animation:none; stroke-dashoffset:0 }
   .section-title::after{ transform:scaleX(1); transition:none }
