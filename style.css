@@ -372,36 +372,51 @@ ol,ul{ margin:0; padding:0; list-style:none }
 }
 .verse + .verse{ margin-top:calc(var(--s-2) * -1) }
 
-/* ── the graduate's portrait: an arched, gold-framed window ── */
+/* ── the graduate's portrait: a matted photo card, sealed with a cap ── */
 .portrait{
   position:relative;
-  width:min(64vw, 250px);
-  margin-top:var(--s-2);
-  padding:7px;
-  background:linear-gradient(160deg,#F0E3BE,#C9A227 40%,#E0C878 68%,#A9861B);
-  border-radius:999px 999px 22px 22px;
-  box-shadow:0 24px 48px -22px rgba(90,72,20,.5);
-  animation:portraitFloat 6s var(--ease) infinite;
+  width:min(76vw, 290px);
+  margin-top:var(--s-3);
+  margin-bottom:var(--s-4);   /* room for the badge that overlaps below */
+  padding:10px;
+  background:linear-gradient(180deg,#FFFDF9,var(--ivory-2));
+  border:1px solid rgba(201,162,39,.4);
+  border-radius:var(--radius-l);
+  box-shadow:0 30px 55px -28px rgba(90,72,20,.5);
 }
 .portrait-frame{
+  position:relative;
   display:block; overflow:hidden;
-  aspect-ratio:3/4;
-  border:4px solid #FFFDF9;
-  border-radius:999px 999px 16px 16px;
+  aspect-ratio:4/5;
+  border-radius:calc(var(--radius-l) - 7px);
   background:var(--ivory-2);
 }
+/* hairline mat line drawn over the photo's edge */
+.portrait-frame::after{
+  content:""; position:absolute; inset:6px;
+  border:1px solid rgba(255,253,249,.55);
+  border-radius:calc(var(--radius-l) - 11px);
+  pointer-events:none;
+}
 .portrait img{
-  width:100%; height:100%; object-fit:cover; object-position:50% 18%;
+  width:100%; height:100%; object-fit:cover; object-position:50% 28%;
   display:block;
 }
 /* once revealed, the photo breathes with a slow, subtle zoom */
-.portrait.in img{ animation:kenburns 9s ease-in-out infinite alternate }
-.portrait-spark{ position:absolute; width:15px; opacity:.9 }
-.portrait-spark svg{ width:100%; height:auto; display:block }
-.ps-l{ top:16%; inset-inline-start:-24px }
-.ps-r{ bottom:10%; inset-inline-end:-22px; width:11px }
-@keyframes portraitFloat{ 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(-7px) } }
-@keyframes kenburns{ from{ transform:scale(1) } to{ transform:scale(1.07) } }
+.portrait.in img{ animation:kenburns 10s ease-in-out infinite alternate }
+@keyframes kenburns{ from{ transform:scale(1) } to{ transform:scale(1.05) } }
+/* the gold cap seal, overlapping the mat's lower edge */
+.portrait-badge{
+  position:absolute; left:50%; bottom:-24px;
+  transform:translateX(-50%);
+  display:flex; align-items:center; justify-content:center;
+  width:52px; height:52px;
+  background:linear-gradient(140deg,var(--gold-lt),var(--gold) 55%,var(--gold-deep));
+  border:2px solid #FFFDF9;
+  border-radius:50%;
+  box-shadow:var(--shadow-gold);
+}
+.portrait-badge svg{ width:30px; height:auto; display:block }
 
 .name-block{
   display:flex; align-items:center; justify-content:center; gap:var(--s-4);
@@ -609,21 +624,21 @@ ol,ul{ margin:0; padding:0; list-style:none }
   font-size:var(--t-small); letter-spacing:.18em; color:var(--gold-deep);
   direction:ltr;
 }
-.foot-ask{ margin-top:var(--s-5); font-size:var(--t-small); color:var(--ink-2) }
-.foot-ask a{
+/* the studio's corner: one quiet block for the maker and their number */
+.foot-studio{
+  margin-top:var(--s-6);
+  padding-top:var(--s-5);
+  border-top:1px solid rgba(201,162,39,.25);
+  display:flex; flex-direction:column; gap:var(--s-2);
+  font-size:var(--t-small); color:var(--ink-2);
+}
+.foot-studio a{
   color:var(--gold-ink); text-decoration:none;
   border-bottom:1px solid rgba(201,162,39,.45); padding-bottom:.1em;
+  transition:border-color var(--dur-fast) var(--ease);
 }
-.foot-ask a:hover{ border-color:var(--gold) }
-.foot-credit{ margin-top:var(--s-4); font-size:var(--t-small) }
-.foot-credit a{
-  color:var(--ink-2); text-decoration:none;
-  border-bottom:1px solid rgba(201,162,39,.45);
-  padding-bottom:.15em;
-  transition:color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
-}
-.foot-credit a:hover{ color:var(--gold-ink); border-color:var(--gold) }
-.foot-credit b{ font-family:var(--font-latin); font-weight:600; color:var(--gold-deep) }
+.foot-studio a:hover{ border-color:var(--gold) }
+.foot-studio b{ font-family:var(--font-latin); font-weight:600; color:var(--gold-deep) }
 
 /* ═══ STICKY ═══════════════════════════════════════════════════ */
 
@@ -729,7 +744,7 @@ html[lang="en"] .name{ line-height:1.15 }
                 50%{ transform:translateX(-50%) translateY(-5px) } }
 
 /* ── sparkles twinkle ── */
-.ec-spark, .card-spark, .portrait-spark{ animation:twinkle 2.8s var(--ease) infinite }
+.ec-spark, .card-spark{ animation:twinkle 2.8s var(--ease) infinite }
 @keyframes twinkle{ 0%,100%{ opacity:.35; transform:scale(.85) }
                     50%{ opacity:1; transform:scale(1.1) } }
 
@@ -749,8 +764,8 @@ html[lang="en"] .name{ line-height:1.15 }
 @keyframes cue{ 0%,100%{ transform:scaleY(.55); opacity:.6 } 50%{ transform:scaleY(1); opacity:1 } }
 
 @media (prefers-reduced-motion:reduce){
-  .name,.ec-name,.grade-num,.grade-num.done,.portrait,.portrait.in img,
-  .seal-sm .seal-cap,.ec-spark,.card-spark,.portrait-spark,
+  .name,.ec-name,.grade-num,.grade-num.done,.portrait.in img,
+  .seal-sm .seal-cap,.ec-spark,.card-spark,
   .btn-solid::after,.cue-line{ animation:none }
   .site.on .orn use{ animation:none; stroke-dashoffset:0 }
   .section-title::after{ transform:scaleX(1); transition:none }
