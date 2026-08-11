@@ -79,6 +79,7 @@
 
     /* footer + sticky */
     { s: '.foot-line', ar: 'بحضوركم تكتمل فرحتنا', en: 'Your presence completes our joy' },
+    { s: '.foot-credit a', ar: 'صُمّمت الدعوة بواسطة <b>Invite Sites</b> — تعرّفوا علينا', en: 'Invitation crafted by <b>Invite Sites</b> — learn more about us' },
     { s: '#stickyCta .btn', ar: 'الموقع على الخريطة', en: 'Map & directions' },
   ];
 

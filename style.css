@@ -609,6 +609,15 @@ ol,ul{ margin:0; padding:0; list-style:none }
   font-size:var(--t-small); letter-spacing:.18em; color:var(--gold-deep);
   direction:ltr;
 }
+.foot-credit{ margin-top:var(--s-5); font-size:var(--t-small) }
+.foot-credit a{
+  color:var(--ink-2); text-decoration:none;
+  border-bottom:1px solid rgba(201,162,39,.45);
+  padding-bottom:.15em;
+  transition:color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+.foot-credit a:hover{ color:var(--gold-ink); border-color:var(--gold) }
+.foot-credit b{ font-family:var(--font-latin); font-weight:600; color:var(--gold-deep) }
 
 /* ═══ STICKY ═══════════════════════════════════════════════════ */
 
