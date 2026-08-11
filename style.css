@@ -590,24 +590,12 @@ ol,ul{ margin:0; padding:0; list-style:none }
          font-size:var(--t-h2); color:var(--ink) }
 .v-addr{ margin-top:var(--s-2); color:var(--ink-2); font-size:var(--t-small) }
 .v-actions{ margin-top:var(--s-5); display:flex; justify-content:center }
-
-/* ═══ 7 · CONTACT ══════════════════════════════════════════════ */
-
-.contact{ text-align:center }
-.contact-actions{
-  margin-top:var(--s-5);
-  display:flex; flex-wrap:wrap; gap:var(--s-3); justify-content:center;
+.v-ask{ margin-top:var(--s-4); font-size:var(--t-small); color:var(--ink-2) }
+.v-ask a{
+  color:var(--gold-ink); text-decoration:none;
+  border-bottom:1px solid rgba(201,162,39,.45); padding-bottom:.1em;
 }
-.btn-line{
-  background:var(--ivory-warm); color:var(--gold-ink);
-  border-color:rgba(201,162,39,.45);
-}
-.btn-line:hover{ border-color:var(--gold); background:#fff }
-.contact-num{
-  margin-top:var(--s-4);
-  font-family:var(--font-latin); font-size:var(--t-lead);
-  letter-spacing:.08em; color:var(--ink-2);
-}
+.v-ask a:hover{ border-color:var(--gold) }
 
 /* ═══ 8 · FOOTER ═══════════════════════════════════════════════ */
 
