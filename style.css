@@ -268,6 +268,24 @@ ol,ul{ margin:0; padding:0; list-style:none }
   animation:pulse 2.4s var(--ease) infinite;
 }
 
+/* studio credit — pinned under the envelope, seen before the seal opens */
+.intro-credit{
+  position:absolute;
+  bottom:calc(var(--safe-b) + 1.3rem);
+  left:50%; transform:translateX(-50%);
+  white-space:nowrap;
+  padding:.55em 1.2em;
+  background:var(--ivory-warm);
+  border:1px solid rgba(201,162,39,.45);
+  border-radius:999px;
+  box-shadow:var(--shadow-s);
+  font-size:var(--t-small); color:var(--ink-2);
+  text-decoration:none;
+  transition:border-color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+.intro-credit:hover{ border-color:var(--gold); transform:translateX(-50%) translateY(-1px) }
+.intro-credit b{ font-family:var(--font-latin); font-weight:600; color:var(--gold-deep) }
+
 /* ═══ BACKGROUND MUSIC ═════════════════════════════════════════ */
 /* the YouTube player hides off-stage; only its sound remains */
 #ytBg{

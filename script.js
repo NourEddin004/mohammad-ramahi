@@ -63,7 +63,10 @@ function openEnvelope(){
 
 seal.addEventListener('click', openEnvelope);
 /* the rest of the envelope also opens it — a bigger target for small hands */
-intro.addEventListener('click', e => { if (e.target !== seal) openEnvelope(); });
+intro.addEventListener('click', e => {
+  if (e.target.closest('.intro-credit')) return;   // the credit link is its own destination
+  if (e.target !== seal) openEnvelope();
+});
 seal.addEventListener('keydown', e => {
   if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openEnvelope(); }
 });

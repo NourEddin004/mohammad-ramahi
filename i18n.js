@@ -29,6 +29,7 @@
     { s: '.ec-name', ar: 'محمّد', en: 'Mohammad' },
     { s: '.ec-sub', ar: 'عبدالله الرمحي', en: 'Abdullah Al-Ramhi' },
     { s: '#musicBtn', attr: 'aria-label', ar: 'الموسيقى', en: 'Music' },
+    { s: '.intro-credit', ar: 'دعوات رقمية بتصميم <b>Invite Sites</b> ↗', en: 'Digital invitations by <b>Invite Sites</b> ↗' },
 
     /* hero */
     { s: '.hero .verse', i: 0, ar: 'أشرق هذا اليوم بالبشرى<br>الحمدلله على تباشير الأفراح', en: 'The day has dawned with joyful news —<br>praise be to God for these glad tidings' },
