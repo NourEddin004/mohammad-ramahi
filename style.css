@@ -642,7 +642,33 @@ ol,ul{ margin:0; padding:0; list-style:none }
 
 /* ═══ STICKY ═══════════════════════════════════════════════════ */
 
-.sticky-cta{
+/* ═══ SWIPE HINT ═══════════════════════════════════════════════
+   A small gold hand rises and falls above the scroll cue, telling
+   first-time guests the card continues below. It leaves as soon as
+   they scroll (or on its own after a few loops). */
+.swipe-hint{
+  position:fixed; z-index:var(--z-sticky);
+  inset-inline-end:16px; bottom:calc(var(--safe-b) + 16px);
+  width:46px; height:46px;
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(255,253,249,.92);
+  border:1px solid rgba(201,162,39,.45);
+  border-radius:50%;
+  box-shadow:var(--shadow-s);
+  pointer-events:none;
+  opacity:0; visibility:hidden;
+  transition:opacity .5s var(--ease), visibility .5s;
+}
+.swipe-hint svg{ width:24px; height:auto; display:block; fill:var(--gold-deep) }
+.swipe-hint.on{
+  opacity:1; visibility:visible;
+  animation:swipeNudge 1.9s var(--ease) infinite;
+}
+@keyframes swipeNudge{
+  0%,100%{ transform:translateY(7px) }
+  40%{ transform:translateY(-12px) }
+  60%{ transform:translateY(-12px) }
+}
   position:fixed; z-index:var(--z-sticky);
   inset-inline:0; bottom:0;
   padding:.75rem var(--gutter) calc(var(--safe-b) + .75rem);

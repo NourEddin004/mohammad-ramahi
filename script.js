@@ -49,7 +49,23 @@ function enterSite(){
   burst(80);
   runGrade();
   startReveal();
+  showSwipeHint();
   setTimeout(() => { intro.hidden = true; }, 900);
+}
+
+/* ═══ 1a · SWIPE HINT ═══
+   The nudging hand appears once the card opens and leaves at the
+   first scroll — or quietly on its own if the guest lingers. */
+const swipeHint = $('#swipeHint');
+function hideSwipeHint(){ swipeHint.classList.remove('on'); }
+function showSwipeHint(){
+  if (REDUCED) return;                       // the scroll cue is enough
+  setTimeout(() => {
+    if (window.scrollY > 40) return;         // they already found the way
+    swipeHint.classList.add('on');
+    addEventListener('scroll', hideSwipeHint, { once:true, passive:true });
+    setTimeout(hideSwipeHint, 9000);
+  }, 1600);                                  // let the confetti land first
 }
 
 function openEnvelope(){
