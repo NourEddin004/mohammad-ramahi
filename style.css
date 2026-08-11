@@ -590,12 +590,6 @@ ol,ul{ margin:0; padding:0; list-style:none }
          font-size:var(--t-h2); color:var(--ink) }
 .v-addr{ margin-top:var(--s-2); color:var(--ink-2); font-size:var(--t-small) }
 .v-actions{ margin-top:var(--s-5); display:flex; justify-content:center }
-.v-ask{ margin-top:var(--s-4); font-size:var(--t-small); color:var(--ink-2) }
-.v-ask a{
-  color:var(--gold-ink); text-decoration:none;
-  border-bottom:1px solid rgba(201,162,39,.45); padding-bottom:.1em;
-}
-.v-ask a:hover{ border-color:var(--gold) }
 
 /* ═══ 8 · FOOTER ═══════════════════════════════════════════════ */
 
@@ -615,7 +609,13 @@ ol,ul{ margin:0; padding:0; list-style:none }
   font-size:var(--t-small); letter-spacing:.18em; color:var(--gold-deep);
   direction:ltr;
 }
-.foot-credit{ margin-top:var(--s-5); font-size:var(--t-small) }
+.foot-ask{ margin-top:var(--s-5); font-size:var(--t-small); color:var(--ink-2) }
+.foot-ask a{
+  color:var(--gold-ink); text-decoration:none;
+  border-bottom:1px solid rgba(201,162,39,.45); padding-bottom:.1em;
+}
+.foot-ask a:hover{ border-color:var(--gold) }
+.foot-credit{ margin-top:var(--s-4); font-size:var(--t-small) }
 .foot-credit a{
   color:var(--ink-2); text-decoration:none;
   border-bottom:1px solid rgba(201,162,39,.45);

@@ -65,9 +65,9 @@
     { s: '.v-name', ar: 'ديوان أبناء الشمال', en: 'Abnaa Al-Shamal Diwan' },
     { s: '.v-addr', ar: 'طبربور — عمّان، الأردن', en: 'Tabarbour — Amman, Jordan' },
     { s: '.v-actions .btn-solid', ar: PIN_ICO + ' افتح الموقع على الخريطة', en: PIN_ICO + ' Open in Google Maps' },
-    { s: '.v-ask', ar: 'للاستفسار: <a href="tel:+962796217414"><bdi dir="ltr">+962 79 621 7414</bdi></a> · <a href="https://wa.me/962796217414" target="_blank" rel="noopener">واتساب</a>', en: 'Questions? <a href="tel:+962796217414"><bdi dir="ltr">+962 79 621 7414</bdi></a> · <a href="https://wa.me/962796217414" target="_blank" rel="noopener">WhatsApp</a>' },
 
     /* footer + sticky */
+    { s: '.foot-ask', ar: 'للاستفسار: <a href="tel:+962796217414"><bdi dir="ltr">+962 79 621 7414</bdi></a> · <a href="https://wa.me/962796217414" target="_blank" rel="noopener">واتساب</a>', en: 'Questions? <a href="tel:+962796217414"><bdi dir="ltr">+962 79 621 7414</bdi></a> · <a href="https://wa.me/962796217414" target="_blank" rel="noopener">WhatsApp</a>' },
     { s: '.foot-line', ar: 'بحضوركم تكتمل فرحتنا', en: 'Your presence completes our joy' },
     { s: '.foot-credit a', ar: 'صُمّمت الدعوة بواسطة <b>Invite Sites</b> — تعرّفوا علينا', en: 'Invitation crafted by <b>Invite Sites</b> — learn more about us' },
     { s: '#stickyCta .btn', ar: 'الموقع على الخريطة', en: 'Map & directions' },
